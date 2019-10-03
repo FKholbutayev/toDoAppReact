@@ -1,6 +1,6 @@
 const express = require('express'); 
 const mongoose = require('mongoose'); 
-
+const path = require('path');
 
 const items = require('./routes/api/items');
 
@@ -14,7 +14,7 @@ app.use(express.json());
 const db = require('./config/keys').mongoURI; 
 
 //connect to DB 
-mongoose.connect(db, {
+mongoose.connect(process.env.mongoURI || db, {
     useNewUrlParser: true,
     useCreateIndex: true, 
     useUnifiedTopology: true 
